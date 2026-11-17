@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden}
+  body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#fff;background:#171b52}
+  .canvas{position:relative;width:1200px;height:630px;overflow:hidden;background:linear-gradient(116deg,#171b52 5%,#292d78 60%,#5144ae 100%)}
+  .halo{position:absolute;width:690px;height:690px;right:-215px;top:-328px;border:1px solid rgba(255,255,255,.14);border-radius:50%;box-shadow:0 0 0 88px rgba(255,255,255,.028),0 0 0 180px rgba(255,255,255,.022)}
+  .grid{position:absolute;inset:0;opacity:.1;background-image:linear-gradient(rgba(255,255,255,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.13) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(90deg,transparent 15%,#000 100%)}
+  .content{position:relative;z-index:1;padding:64px 70px;height:100%;display:flex;flex-direction:column}
+  .brand{display:flex;align-items:center;gap:15px}
+  .mark{display:grid;place-items:center;width:62px;height:62px;border-radius:17px;background:#655afa;box-shadow:0 14px 30px rgba(24,14,97,.35)}
+  .brand-name{font-size:28px;font-weight:800;letter-spacing:-1.1px;line-height:1.06}.brand-name span{color:#aeabff}
+  .brand-kicker{font-size:10px;font-weight:800;letter-spacing:3.1px;color:#bec5eb;margin-top:8px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;width:max-content;border:1px solid rgba(255,255,255,.24);border-radius:30px;padding:8px 12px;margin-top:74px;font-size:10px;font-weight:800;letter-spacing:1.6px;color:#d7d9fc}
+  .eyebrow i{display:block;width:7px;height:7px;border-radius:50%;background:#7ee5ce;box-shadow:0 0 12px #7ee5ce}
+  h1{font-size:72px;line-height:1.03;letter-spacing:-4.7px;margin:21px 0 17px;font-weight:850}
+  h1 em{font-style:normal;color:#9fe8dc}
+  .subtitle{font-size:20px;color:#d4dcf4;line-height:1.5;margin:0;max-width:640px}
+  .footer{margin-top:auto;font-size:15px;letter-spacing:.2px;color:#dce2fb;display:flex;align-items:center;gap:15px}
+  .footer b{color:#81e2d5;font-size:13px}
+  .network-card{position:absolute;right:66px;top:161px;width:380px;height:276px;border:1px solid rgba(255,255,255,.24);border-radius:20px;background:rgba(255,255,255,.115);box-shadow:0 28px 55px rgba(8,9,58,.22);padding:25px;backdrop-filter:blur(10px)}
+  .network-title{display:flex;align-items:center;justify-content:space-between;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:22px;font-weight:750;letter-spacing:1px}
+  .badge{background:#9debdc;color:#153b45;border-radius:6px;padding:7px 9px;font-size:17px;font-weight:800}
+  .blocks{display:flex;gap:5px;margin-top:51px;height:47px}
+  .blocks span{flex:1;border-radius:7px}.blocks span:nth-child(1){background:#aaa5ff}.blocks span:nth-child(2){background:#5bd1c4}.blocks span:nth-child(3){background:#ffc171}.blocks span:nth-child(4){background:#8bd8ef}
+  .block-labels{display:flex;justify-content:space-between;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:#e0e6ff;margin-top:11px}
+  .divider{height:1px;background:rgba(255,255,255,.2);margin:24px 0 17px}
+  .network-foot{display:flex;justify-content:space-between;color:#dbe2fa;font-size:13px}.network-foot strong{color:#a9f1e4}
+</style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="grid"></div><div class="halo"></div>
+    <div class="content">
+      <div class="brand">
+        <div class="mark"><svg width="37" height="37" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M3 21h7l4-12 6 23 5-16 3 5h9" stroke="white" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="brand-name">NetCalc <span>Pro</span></div><div class="brand-kicker">NETWORK TOOLKIT</div></div>
+      </div>
+      <div class="eyebrow"><i></i> IPv4 SUBNETTING, SIMPLIFIED</div>
+      <h1>Network math,<br/><em>made clear.</em></h1>
+      <p class="subtitle">Calculate subnets. Plan address space.<br/>Understand every result.</p>
+      <div class="footer"><span>Subnet Calculator</span><b>•</b><span>FLSM</span><b>•</b><span>VLSM</span><b>•</b><span>CIDR</span></div>
+    </div>
+    <div class="network-card">
+      <div class="network-title"><span>192.168.1.0</span><span class="badge">/24</span></div>
+      <div class="blocks"><span></span><span></span><span></span><span></span></div>
+      <div class="block-labels"><span>.0/26</span><span>.64/26</span><span>.128/26</span><span>.192/26</span></div>
+      <div class="divider"></div>
+      <div class="network-foot"><span>4 equal subnets</span><strong>62 hosts each</strong></div>
+    </div>
+  </div>
+</body>
+</html>

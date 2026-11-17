@@ -28,6 +28,8 @@ The E2E command uses Playwright Chromium. If needed, install it with `npx playwr
 
 Hash routes (`/#/tools/...`) support refreshes on static hosts. Calculator inputs are shareable in the hash route query string. Light/dark preference is stored locally.
 
+The share thumbnail is `public/og-image.png`. Edit `scripts/og-image.html` and run `node scripts/generate-og-image.mjs` to regenerate it; `index.html` contains the public Open Graph and X card URLs.
+
 ## Deploy
 
 For a root domain, `npm run build` creates `dist/`. For a GitHub Pages project path, set `VITE_BASE_PATH` before building, for example:
