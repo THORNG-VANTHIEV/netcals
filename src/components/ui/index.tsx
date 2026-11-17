@@ -1,0 +1,17 @@
+import type {ButtonHTMLAttributes,HTMLAttributes,InputHTMLAttributes,ReactNode} from 'react'
+import {Copy,Check} from 'lucide-react'
+import {useState} from 'react'
+import {copyText} from '../../shared/lib/export'
+import {Button as ShadcnButton} from './button'
+import {Card as ShadcnCard} from './card'
+
+export function Card({children,className='',...props}:HTMLAttributes<HTMLDivElement> & {children:ReactNode}){return <ShadcnCard className={`card ${className}`} {...props}>{children}</ShadcnCard>}
+export function Button({children,className='',variant='primary',...props}:ButtonHTMLAttributes<HTMLButtonElement> & {variant?:'primary'|'secondary'|'ghost'|'danger'}){const shadcnVariant=variant==='primary'?'default':variant==='secondary'?'outline':variant==='danger'?'destructive':'ghost';return <ShadcnButton variant={shadcnVariant} size="lg" className={`btn btn-${variant} ${className}`} {...props}>{children}</ShadcnButton>}
+export function Field({label,hint,error,id,...props}:InputHTMLAttributes<HTMLInputElement>&{label:string;hint?:string;error?:string}){return <div className="field"><label htmlFor={id}>{label}</label><input id={id} aria-invalid={!!error} aria-describedby={error?`${id}-error`:hint?`${id}-hint`:undefined} {...props}/>{hint&&<small id={`${id}-hint`}>{hint}</small>}{error&&<small id={`${id}-error`} className="field-error">{error}</small>}</div>}
+export function PageHeader({eyebrow,title,description,children}:{eyebrow:string;title:string;description:string;children?:ReactNode}){return <div className="page-header"><div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="page-description">{description}</p></div>{children&&<div className="page-header-actions">{children}</div>}</div>}
+export function ErrorNotice({message}:{message:string}){return <div role="alert" className="notice notice-error">{message}</div>}
+export function InfoNotice({children}:{children:ReactNode}){return <div className="notice notice-info">{children}</div>}
+export function Stat({label,value,icon,accent='indigo',detail}:{label:string;value:string|number;icon?:ReactNode;accent?:'indigo'|'teal'|'amber'|'slate';detail?:string}){return <Card className={`stat stat-${accent}`}><div className="stat-top"><span>{label}</span>{icon&&<span className="stat-icon">{icon}</span>}</div><strong>{value}</strong>{detail&&<small>{detail}</small>}</Card>}
+export function CopyButton({value,label='Copy',variant='ghost'}:{value:string;label?:string;variant?:'ghost'|'secondary'}){const [copied,setCopied]=useState(false);return <Button variant={variant} type="button" onClick={async()=>{try{await copyText(value);setCopied(true);setTimeout(()=>setCopied(false),1800)}catch{setCopied(false)}}} title={`Copy ${label}`}><span>{copied?<Check size={15}/>:<Copy size={15}/>}</span>{copied?'Copied':label}</Button>}
+export function ValueRow({label,value,copy=true}:{label:string;value:string|number;copy?:boolean}){return <div className="value-row"><span>{label}</span><div><strong>{value}</strong>{copy&&<CopyButton value={String(value)} label=""/>}</div></div>}
+export function Segmented<T extends string>({value,options,onChange}:{value:T;options:{value:T;label:string}[];onChange:(value:T)=>void}){return <div className="segmented" role="group">{options.map(option=><button type="button" key={option.value} className={value===option.value?'active':''} aria-pressed={value===option.value} onClick={()=>onChange(option.value)}>{option.label}</button>)}</div>}
