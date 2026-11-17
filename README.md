@@ -33,7 +33,7 @@ Hash routes (`/#/tools/...`) support refreshes on static hosts. Calculator input
 For a root domain, `npm run build` creates `dist/`. For a GitHub Pages project path, set `VITE_BASE_PATH` before building, for example:
 
 ```bash
-VITE_BASE_PATH=/netcalc-pro/ npm run build
+VITE_BASE_PATH=/netcals/ npm run build
 ```
 
 Publish `dist/` with GitHub Pages, Netlify, or Vercel. The provided GitHub Actions workflow uses the repository name as its base path.
