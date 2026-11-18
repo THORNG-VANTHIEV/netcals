@@ -1,8 +1,9 @@
 import {useEffect,useLayoutEffect,useRef,useState} from 'react'
 import {NavLink,Outlet,useLocation,useNavigate} from 'react-router-dom'
-import {Activity,ArrowRightLeft,Binary,BookOpen,Calculator,ChevronDown,Command,Grid2X2,House,LayoutDashboard,Menu,Moon,MoreHorizontal,Network,Search,Sun,Table2,X} from 'lucide-react'
+import {Activity,ArrowRightLeft,Binary,BookOpen,Calculator,Check,ChevronDown,Command,Download,Grid2X2,House,LayoutDashboard,Menu,Moon,MoreHorizontal,Network,Search,Sun,Table2,X} from 'lucide-react'
 import {useLocale} from '../../app/providers/LocaleProvider'
 import {useTheme} from '../../app/providers/ThemeProvider'
+import {usePWA} from '../../app/usePWA'
 
 const items=[
   {to:'/',label:'Dashboard',icon:LayoutDashboard},
@@ -29,6 +30,7 @@ export function AppLayout(){
   const location=useLocation()
   const {theme,toggle}=useTheme()
   const {locale,setLocale,t}=useLocale()
+  const pwa=usePWA()
   const searchRef=useRef<HTMLInputElement>(null)
   const drawerRef=useRef<HTMLElement>(null)
   const moreRef=useRef<HTMLButtonElement>(null)
@@ -77,6 +79,10 @@ export function AppLayout(){
   return <div className="app-shell">
     <aside ref={drawerRef} className={`sidebar ${open?'sidebar-open':''}`} role={open?'dialog':undefined} aria-modal={open||undefined} aria-label={open?t('Main navigation'):undefined} onKeyDown={open?trapDrawerFocus:undefined}>
       <div className="brand"><span className="brand-mark"><Activity size={24} strokeWidth={2.5}/></span><span><strong>NetCalc<span> Pro</span></strong><small>{t('NETWORK TOOLKIT')}</small></span><button ref={closeRef} className="mobile-close icon-btn" onClick={closeDrawer} aria-label={t('Close navigation')}><X/></button></div>
+      <div className="sidebar-install">
+        {pwa.installed?<div className="install-complete"><Check size={18}/>{t('Installed and ready offline')}</div>:<button type="button" onClick={pwa.install}><Download size={18}/>{t('Install app')}</button>}
+        {pwa.installHelp&&<p role="status">{t(pwa.installInstructions)}</p>}
+      </div>
       <div className="sidebar-section-label">{t('WORKSPACE')}</div>
       <nav aria-label={t('Main navigation')}>
         {items.slice(0,1).map(item=><NavLink key={item.to} to={item.to} end onClick={selectDrawerItem} className={({isActive})=>`nav-link ${isActive?'active':''}`}><item.icon size={18}/>{t(item.label)}</NavLink>)}
@@ -102,5 +108,6 @@ export function AppLayout(){
       {mobileItems.map(item=><NavLink key={item.to} to={item.to} end className={({isActive})=>`bottom-nav-link ${isActive?'active':''}`}><item.icon size={21} strokeWidth={2}/><span>{t(item.label)}</span></NavLink>)}
       <button ref={moreRef} className={`bottom-nav-link ${moreActive||open?'active':''}`} type="button" onClick={()=>setOpen(true)} aria-label={t('More tools')} aria-expanded={open}><MoreHorizontal size={22}/><span>{t('More')}</span></button>
     </nav>
+    {(pwa.offlineReady||pwa.needRefresh)&&<div className="pwa-toast" role="status"><span>{t(pwa.needRefresh?'Update available. Refresh when ready.':'Ready for offline use.')}</span>{pwa.needRefresh&&<button type="button" className="pwa-refresh" onClick={pwa.refresh}>{t('Refresh')}</button>}<button type="button" className="pwa-toast-close" aria-label={t('Dismiss')} onClick={pwa.needRefresh?pwa.dismissRefresh:pwa.dismissOfflineReady}><X size={17}/></button></div>}
   </div>
 }

@@ -149,3 +149,20 @@ html[lang="km"] .sidebar-section-label,html[lang="km"] .eyebrow{letter-spacing:0
   .mobile-page-transition{animation:none}
   .bottom-nav-link{transition:none}
 }
+
+.sidebar-install{margin:0 8px 23px}
+.sidebar-install>button,.install-complete{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:44px;padding:9px 11px;border:1px solid var(--border);border-radius:10px;background:var(--primary-soft);color:var(--primary-dark);font-size:12px;font-weight:760;line-height:1.35;text-align:center}
+.sidebar-install>button:hover{border-color:var(--primary);background:var(--surface-muted)}
+.install-complete{background:var(--teal-soft);color:var(--teal)}
+.sidebar-install p{margin:9px 4px 0;color:var(--muted);font-size:11px;line-height:1.5}
+.pwa-toast{position:fixed;right:22px;bottom:20px;z-index:25;display:flex;align-items:center;gap:10px;max-width:min(420px,calc(100vw - 24px));padding:10px 11px 10px 15px;border:1px solid var(--border);border-radius:12px;background:var(--surface);box-shadow:0 12px 32px rgba(20,28,60,.18);color:var(--text);font-size:12px;line-height:1.4}
+.pwa-toast span{flex:1}
+.pwa-toast button{flex:none;border:0;border-radius:7px;background:transparent;color:var(--primary-dark);font:inherit;font-weight:760;min-height:36px}
+.pwa-toast .pwa-refresh{padding:0 10px;background:var(--primary-soft)}
+.pwa-toast .pwa-toast-close{display:grid;place-items:center;width:36px;color:var(--muted)}
+@media(max-width:680px){
+  .sidebar-install{margin:0 0 20px}
+  .sidebar-install>button,.install-complete{min-height:48px;font-size:13px}
+  .sidebar-install p{font-size:12px}
+  .pwa-toast{left:12px;right:12px;bottom:calc(78px + env(safe-area-inset-bottom));max-width:none}
+}
