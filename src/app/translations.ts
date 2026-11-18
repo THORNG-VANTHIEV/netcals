@@ -2,6 +2,11 @@
 // use the same vocabulary in both languages.
 export const translations:Record<string,string>={
   'Dashboard':'ផ្ទាំងទិដ្ឋភាព',
+  'Home':'ដើម',
+  'More':'ផ្សេងទៀត',
+  'More tools':'ឧបករណ៍ផ្សេងទៀត',
+  'Mobile navigation':'ម៉ឺនុយទូរស័ព្ទ',
+  'Close search':'បិទការស្វែងរក',
   'Subnet Calculator':'ឧបករណ៍គណនា Subnet',
   'FLSM Calculator':'ឧបករណ៍គណនា FLSM',
   'VLSM Planner':'ឧបករណ៍រៀបចំ VLSM',
@@ -193,6 +198,7 @@ export const translations:Record<string,string>={
   '33 prefixes':'33 prefixes',
   'Filter prefix table':'ច្រោះតារាង prefix',
   'Filter prefix, mask or type...':'ច្រោះតាម prefix, mask ឬប្រភេទ...',
+  'Search prefix or mask':'ស្វែងរក prefix ឬ mask',
   'Ascending':'តូចទៅធំ',
   'Descending':'ធំទៅតូច',
   'Note':'ចំណាំ',
