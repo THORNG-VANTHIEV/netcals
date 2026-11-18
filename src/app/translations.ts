@@ -23,6 +23,7 @@ export const translations:Record<string,string>={
   'Every address, explained.':'ពន្យល់រាល់ address ឱ្យច្បាស់។',
   'Runs in your browser':'ដំណើរការក្នុង browser របស់អ្នក',
   'IPv4 calculations run locally in your browser.':'ការគណនា IPv4 ដំណើរការក្នុង browser របស់អ្នក។',
+  'All rights reserved.':'រក្សាសិទ្ធិគ្រប់យ៉ាង។',
   'Close navigation':'បិទម៉ឺនុយ',
   'Open navigation':'បើកម៉ឺនុយ',
   'Main navigation':'ម៉ឺនុយមេ',

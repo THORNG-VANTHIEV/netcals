@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react'
+import {useEffect,useLayoutEffect,useRef,useState} from 'react'
 import {NavLink,Outlet,useLocation,useNavigate} from 'react-router-dom'
 import {Activity,ArrowRightLeft,Binary,BookOpen,Calculator,ChevronDown,Command,Grid2X2,House,LayoutDashboard,Menu,Moon,MoreHorizontal,Network,Search,Sun,Table2,X} from 'lucide-react'
 import {useLocale} from '../../app/providers/LocaleProvider'
@@ -53,6 +53,7 @@ export function AppLayout(){
   },[open,searchOpen])
 
   useEffect(()=>{setOpen(false);setSearchOpen(false);setSearch('')},[location.pathname])
+  useLayoutEffect(()=>{window.scrollTo(0,0)},[location.pathname])
   useEffect(()=>{
     if(!open)return
     const previous=document.body.style.overflow
@@ -94,8 +95,8 @@ export function AppLayout(){
         <div className={`search-wrap ${searchOpen?'search-open':''}`}><Search size={18}/><input ref={searchRef} aria-label={t('Search tools')} placeholder={t('Search tools...')} value={search} onChange={e=>setSearch(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&results[0])goTo(results[0].to)}}/><kbd>⌘ K</kbd><button className="search-close icon-btn" type="button" onClick={()=>{setSearchOpen(false);setSearch('')}} aria-label={t('Close search')}><X size={19}/></button>{results.length>0&&<div className="search-results">{results.map(item=><button key={item.to} onClick={()=>goTo(item.to)}><item.icon size={18}/>{t(item.label)}</button>)}</div>}</div>
         <div className="top-actions"><span className="status"><span/> {t('Runs in your browser')}</span><button className="mobile-search-trigger icon-btn" type="button" onClick={()=>{setSearchOpen(true);requestAnimationFrame(()=>searchRef.current?.focus())}} aria-label={t('Search tools')}><Search size={21}/></button><button className="icon-btn theme-btn" onClick={toggle} aria-label={t(`Switch to ${theme==='light'?'dark':'light'} theme`)}>{theme==='light'?<Moon size={19}/>:<Sun size={19}/>}</button><button className="language-btn" type="button" onClick={()=>setLocale(locale==='en'?'km':'en')} title={locale==='en'?'Switch to Khmer':'ប្តូរទៅ English'} aria-label={locale==='en'?'Switch to Khmer':'ប្តូរទៅ English'}>{locale==='en'?'EN':'ខ្មែរ'} <ChevronDown size={15}/></button></div>
       </header>
-      <main className="content"><Outlet/></main>
-      <footer className="footer"><span>© 2026 NetCalc Pro</span><span>{t('IPv4 calculations run locally in your browser.')}</span></footer>
+      <main className="content"><div key={location.pathname} className="mobile-page-transition"><Outlet/></div></main>
+      <footer className="footer"><span>© {new Date().getFullYear()} Mr. Vanthiev. {t('All rights reserved.')}</span><span>{t('IPv4 calculations run locally in your browser.')}</span></footer>
     </div>
     <nav className="bottom-nav" aria-label={t('Mobile navigation')}>
       {mobileItems.map(item=><NavLink key={item.to} to={item.to} end className={({isActive})=>`bottom-nav-link ${isActive?'active':''}`}><item.icon size={21} strokeWidth={2}/><span>{t(item.label)}</span></NavLink>)}
