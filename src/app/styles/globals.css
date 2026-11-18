@@ -2,6 +2,9 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import "@fontsource/noto-sans-khmer/khmer-400.css";
+@import "@fontsource/noto-sans-khmer/khmer-600.css";
+@import "@fontsource/noto-sans-khmer/khmer-700.css";
 
 @custom-variant dark (&:is(.dark *));
 :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#17243d;background:#f6f8fc;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--bg:#f6f8fc;--surface:#fff;--surface-muted:#f8fafc;--text:#17243d;--muted:oklch(0.97 0 0);--border:oklch(0.922 0 0);--primary:oklch(0.205 0 0);--primary-dark:#4338ca;--primary-soft:#eef0ff;--teal:#0f8c84;--teal-soft:#e6f7f4;--amber:#ac6611;--amber-soft:#fff6e8;--shadow:0 8px 32px rgba(34,49,79,.045);--background:oklch(1 0 0);--foreground:oklch(0.145 0 0);--card:oklch(1 0 0);--card-foreground:oklch(0.145 0 0);--popover:oklch(1 0 0);--popover-foreground:oklch(0.145 0 0);--primary-foreground:oklch(0.985 0 0);--secondary:oklch(0.97 0 0);--secondary-foreground:oklch(0.205 0 0);--muted-foreground:oklch(0.556 0 0);--accent:oklch(0.97 0 0);--accent-foreground:oklch(0.205 0 0);--destructive:oklch(0.577 0.245 27.325);--input:oklch(0.922 0 0);--ring:oklch(0.708 0 0);--chart-1:oklch(0.87 0 0);--chart-2:oklch(0.556 0 0);--chart-3:oklch(0.439 0 0);--chart-4:oklch(0.371 0 0);--chart-5:oklch(0.269 0 0);--radius:0.625rem;--sidebar:oklch(0.985 0 0);--sidebar-foreground:oklch(0.145 0 0);--sidebar-primary:oklch(0.205 0 0);--sidebar-primary-foreground:oklch(0.985 0 0);--sidebar-accent:oklch(0.97 0 0);--sidebar-accent-foreground:oklch(0.205 0 0);--sidebar-border:oklch(0.922 0 0);--sidebar-ring:oklch(0.708 0 0)}
@@ -31,3 +34,9 @@
 :root{--primary:#4f46e5;--muted:#69768d;--border:#e5eaf2;--background:var(--bg);--foreground:var(--text);--card:var(--surface);--card-foreground:var(--text);--primary-foreground:#fff;--secondary:var(--surface-muted);--secondary-foreground:var(--text);--muted-foreground:var(--muted);--accent:var(--primary-soft);--accent-foreground:var(--primary-dark);--ring:var(--primary)}
 :root[data-theme=dark]{--background:var(--bg);--foreground:var(--text);--card:var(--surface);--card-foreground:var(--text);--primary-foreground:#101729;--secondary:var(--surface-muted);--secondary-foreground:var(--text);--muted-foreground:var(--muted);--accent:var(--primary-soft);--accent-foreground:var(--primary-dark);--input:var(--border);--ring:var(--primary)}
 .card{display:block;overflow:visible}.table-card{overflow:hidden}.learning-banner{display:flex;align-items:center}
+
+html[lang="km"]{font-family:"Noto Sans Khmer",Inter,ui-sans-serif,system-ui,sans-serif}
+html[lang="km"] body,html[lang="km"] button,html[lang="km"] input,html[lang="km"] select{font-family:"Noto Sans Khmer",Inter,ui-sans-serif,system-ui,sans-serif}
+html[lang="km"] .nav-link{line-height:1.5}
+html[lang="km"] .sidebar-section-label,html[lang="km"] .eyebrow{letter-spacing:0}
+@media(max-width:390px){.language-btn{display:inline-flex;align-items:center;gap:2px;white-space:nowrap;min-width:48px;justify-content:center}.topbar .search-wrap{min-width:0;flex:1}.topbar .search-wrap input{min-width:0}}

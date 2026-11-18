@@ -1,5 +1,6 @@
 import {HashRouter,Route,Routes} from 'react-router-dom'
 import {ThemeProvider} from './providers/ThemeProvider'
+import {LocaleProvider} from './providers/LocaleProvider'
 import {AppLayout} from '../components/layout/AppLayout'
 import {DashboardPage} from '../features/dashboard/presentation/DashboardPage'
 import {SubnetCalculatorPage} from '../features/subnet-calculator/presentation/SubnetCalculatorPage'
@@ -10,4 +11,4 @@ import {BinaryVisualizerPage} from '../features/binary-visualizer/presentation/B
 import {SubnetReferencePage} from '../features/subnet-reference/presentation/SubnetReferencePage'
 import {LearnPage} from '../features/learning/presentation/LearnPage'
 import {NotFoundPage} from '../features/not-found/presentation/NotFoundPage'
-export function App(){return <ThemeProvider><HashRouter><Routes><Route element={<AppLayout/>}><Route index element={<DashboardPage/>}/><Route path="tools/subnet-calculator" element={<SubnetCalculatorPage/>}/><Route path="tools/flsm-calculator" element={<FLSMPage/>}/><Route path="tools/vlsm-calculator" element={<VLSMPage/>}/><Route path="tools/cidr-converter" element={<CIDRConverterPage/>}/><Route path="tools/binary-visualizer" element={<BinaryVisualizerPage/>}/><Route path="reference/subnet-table" element={<SubnetReferencePage/>}/><Route path="learn/subnetting" element={<LearnPage/>}/><Route path="*" element={<NotFoundPage/>}/></Route></Routes></HashRouter></ThemeProvider>}
+export function App(){return <ThemeProvider><LocaleProvider><HashRouter><Routes><Route element={<AppLayout/>}><Route index element={<DashboardPage/>}/><Route path="tools/subnet-calculator" element={<SubnetCalculatorPage/>}/><Route path="tools/flsm-calculator" element={<FLSMPage/>}/><Route path="tools/vlsm-calculator" element={<VLSMPage/>}/><Route path="tools/cidr-converter" element={<CIDRConverterPage/>}/><Route path="tools/binary-visualizer" element={<BinaryVisualizerPage/>}/><Route path="reference/subnet-table" element={<SubnetReferencePage/>}/><Route path="learn/subnetting" element={<LearnPage/>}/><Route path="*" element={<NotFoundPage/>}/></Route></Routes></HashRouter></LocaleProvider></ThemeProvider>}
