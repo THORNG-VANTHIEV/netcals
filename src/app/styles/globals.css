@@ -73,7 +73,7 @@ html[lang="km"] .sidebar-section-label,html[lang="km"] .eyebrow{letter-spacing:0
   .field input,.field select{height:48px;font-size:16px;border-radius:10px}
   .preset-row{gap:8px}
   .preset-row>span{flex-basis:100%;font-size:12px}
-  .preset{min-width:44px;height:44px;font-size:12px;border-radius:9px}
+  .preset{min-width:44px;height:46px;font-size:12px;border-radius:9px}
   .form-actions{gap:9px}
   .form-actions>.btn:first-child{width:100%}
   .form-actions>.btn:not(:first-child){flex:1}
